@@ -51,15 +51,6 @@
             transform: scale(1.05);
         }
         
-        .goal-card:hover {
-            background: linear-gradient(145deg, #ffffff, #f1f5f9);
-            transition: background 0.3s ease;
-        }
-        
-        .dark .goal-card:hover {
-            background: linear-gradient(145deg, #1e293b, #2d3748);
-        }
-        
         .lang-btn.active {
             background-color: #2563eb;
             color: white;
@@ -79,12 +70,31 @@
             transition: transform 0.3s ease-in-out;
         }
 
-        /* Hero background */
-        .hero-section {
-            background-image: linear-gradient(to right, #2563eb, #0ea5e9), url("{{ url_for('static', filename='images/hero-bg.jpg') }}");
-            background-size: cover;
-            background-position: center;
-            background-blend-mode: multiply;
+        /* Goal card hover effects */
+        .goal-card {
+            transition: all 0.3s ease;
+        }
+        
+        .goal-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Light mode specific styles */
+        :not(.dark) .goal-card:hover {
+            background: linear-gradient(145deg, #3b82f6, #2563eb) !important;
+            color: white;
+        }
+        
+        :not(.dark) .goal-card:hover h3,
+        :not(.dark) .goal-card:hover p,
+        :not(.dark) .goal-card:hover .text-accent {
+            color: white !important;
+        }
+        
+        /* Dark mode adjustments */
+        .dark .goal-card:hover {
+            background: linear-gradient(145deg, #1e40af, #1e3a8a) !important;
         }
     </style>
 </head>
@@ -185,23 +195,61 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="hero-section pt-24 pb-20 md:pt-32 md:pb-28 text-white">
-        <div class="container mx-auto px-4 text-center">
+    <section class="hero-section pt-32 pb-32 md:pt-48 md:pb-48 text-white relative">
+    <!-- Background Image -->
+    <div class="absolute inset-0">
+        <img src="{{ url_for('static', filename='images/hero-bg.png') }}" 
+             alt="Robotics Team" 
+             class="w-full h-full object-cover">
+    </div>
+    
+    <!-- Frosted Glass Overlay with Reduced Blur -->
+    <div class="absolute inset-0 bg-white/15 backdrop-blur-sm"></div>
+    
+    <!-- Fog Effect Layer -->
+    <div class="absolute inset-0 bg-gradient-to-b from-white/10 via-transparent to-white/10"></div>
+        <!-- Content -->
+        <div class="container mx-auto px-4 text-center relative z-10">
             <div class="flex justify-center mb-6">
-                <div class="bg-white/20 px-4 py-1 rounded-full text-sm">
+                <div class="bg-white/20 px-4 py-1 rounded-full text-sm backdrop-blur-sm">
                     <i class="fas fa-star mr-2"></i>{{ translations.rookie }}
                 </div>
             </div>
-            <h1 class="text-4xl md:text-6xl font-bold font-orbitron mb-6">{{ translations.hero_title }}</h1>
-            <p class="text-xl md:text-2xl max-w-3xl mx-auto mb-10">
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold font-orbitron mb-6">{{ translations.hero_title }}</h1>
+            <p class="text-xl md:text-2xl lg:text-3xl max-w-3xl mx-auto mb-10">
                 {{ translations.hero_subtitle }}
             </p>
             <div class="flex flex-wrap justify-center gap-4">
-                <a href="#about" class="bg-white text-primary px-8 py-3 rounded-lg font-bold hover:bg-gray-100 transition">{{ translations.learn_more }}</a>
-                <a href="#contact" class="bg-transparent border-2 border-white px-8 py-3 rounded-lg font-bold hover:bg-white hover:text-primary transition">{{ translations.support_us }}</a>
+                <a href="#about" class="bg-white text-primary px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition text-lg">
+                    {{ translations.learn_more }}
+                </a>
+                <a href="#contact" class="bg-transparent border-2 border-white px-8 py-4 rounded-lg font-bold hover:bg-white hover:text-primary transition text-lg">
+                    {{ translations.support_us }}
+                </a>
             </div>
         </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <a href="#about" class="text-white text-3xl">
+                <i class="fas fa-chevron-down"></i>
+            </a>
+        </div>
     </section>
+
+    <style>
+        .hero-section {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+        }
+        
+        @media (min-width: 1024px) {
+            .hero-section {
+                min-height: 100vh;
+            }
+        }
+    </style>
 
     <!-- About Section -->
     <section id="about" class="py-20 bg-gray-50 dark:bg-gray-800">
@@ -213,7 +261,7 @@
             
             <div class="flex flex-col md:flex-row items-center gap-10">
                 <div class="md:w-1/2">
-                    <img src="{{ url_for('static', filename='images/about-robot.jpg') }}" alt="Our Robot" class="w-full h-96 object-cover rounded-xl shadow-lg">
+                    <img src="{{ url_for('static', filename='images/robot.png') }}" alt="Our Robot" class="w-full h-130 object-cover rounded-xl shadow-lg">
                 </div>
                 
                 <div class="md:w-1/2">
@@ -329,7 +377,7 @@
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="goal-card bg-white/10 backdrop-blur-sm p-8 rounded-xl transition duration-300">
+                <div class="goal-card bg-white/10 backdrop-blur-sm p-8 rounded-xl transition-all duration-300 hover:bg-primary/80">
                     <div class="text-4xl text-accent mb-4">
                         <i class="fas fa-trophy"></i>
                     </div>
@@ -337,7 +385,7 @@
                     <p>{{ translations.goal1_desc }}</p>
                 </div>
                 
-                <div class="goal-card bg-white/10 backdrop-blur-sm p-8 rounded-xl transition duration-300">
+                <div class="goal-card bg-white/10 backdrop-blur-sm p-8 rounded-xl transition-all duration-300 hover:bg-primary/80">
                     <div class="text-4xl text-accent mb-4">
                         <i class="fas fa-robot"></i>
                     </div>
@@ -345,7 +393,7 @@
                     <p>{{ translations.goal2_desc }}</p>
                 </div>
                 
-                <div class="goal-card bg-white/10 backdrop-blur-sm p-8 rounded-xl transition duration-300">
+                <div class="goal-card bg-white/10 backdrop-blur-sm p-8 rounded-xl transition-all duration-300 hover:bg-primary/80">
                     <div class="text-4xl text-accent mb-4">
                         <i class="fas fa-users"></i>
                     </div>
@@ -353,7 +401,7 @@
                     <p>{{ translations.goal3_desc }}</p>
                 </div>
                 
-                <div class="goal-card bg-white/10 backdrop-blur-sm p-8 rounded-xl transition duration-300">
+                <div class="goal-card bg-white/10 backdrop-blur-sm p-8 rounded-xl transition-all duration-300 hover:bg-primary/80">
                     <div class="text-4xl text-accent mb-4">
                         <i class="fas fa-book"></i>
                     </div>
@@ -361,7 +409,7 @@
                     <p>{{ translations.goal4_desc }}</p>
                 </div>
                 
-                <div class="goal-card bg-white/10 backdrop-blur-sm p-8 rounded-xl transition duration-300">
+                <div class="goal-card bg-white/10 backdrop-blur-sm p-8 rounded-xl transition-all duration-300 hover:bg-primary/80">
                     <div class="text-4xl text-accent mb-4">
                         <i class="fas fa-handshake"></i>
                     </div>
@@ -369,7 +417,7 @@
                     <p>{{ translations.goal5_desc }}</p>
                 </div>
                 
-                <div class="goal-card bg-white/10 backdrop-blur-sm p-8 rounded-xl transition duration-300">
+                <div class="goal-card bg-white/10 backdrop-blur-sm p-8 rounded-xl transition-all duration-300 hover:bg-primary/80">
                     <div class="text-4xl text-accent mb-4">
                         <i class="fas fa-graduation-cap"></i>
                     </div>
