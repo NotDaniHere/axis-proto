@@ -1,3 +1,2 @@
-# Collection of resources used for the Axis FTC Project
-
-atm there is only the website (kind of vibe coded)
+# Main website for Axis FTC.
+Includes docker stuff in order to make it run on GCR
