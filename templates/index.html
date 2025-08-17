@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Axis FTC #28128 | {{ translations.footer_text }}</title>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/logo.png') }}">
+
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -104,8 +106,8 @@
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
             <div class="flex items-center">
                 <a href="https://ftcscout.org/teams/28128" class="flex items-center group" target="_blank">
-                    <div class="bg-primary p-2 rounded-lg mr-3 group-hover:scale-105 transition">
-                        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Axis FTC Logo" class="w-8 h-8">
+                    <div class="p-1 rounded-lg mr-4 group-hover:scale-105 transition">
+                        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Axis FTC Logo" class="w-12 h-12">
                     </div>
                     <h1 class="text-xl md:text-2xl font-bold font-orbitron group-hover:text-primary transition">Axis <span class="text-primary">#28128</span></h1>
                 </a>
@@ -253,6 +255,11 @@
 
     <!-- About Section -->
     <section id="about" class="py-20 bg-gray-50 dark:bg-gray-800">
+        <!-- <div class="absolute inset-0">
+        <img src="{{ url_for('static', filename='images/about.jpg') }}" 
+             alt="Team Workshop Background"
+             class="w-full h-full object-cover">
+        </div> -->
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold font-orbitron mb-4">{{ translations.about_title }}</h2>
@@ -308,53 +315,99 @@
         </div>
     </section>
 
-    <!-- Team Members Section -->
-    <section id="team" class="py-20 bg-white dark:bg-gray-900">
-        <div class="container mx-auto px-4">
+    <!-- Team Members Section with Background -->
+    <section id="team" class="py-20 relative">
+        <!-- Background Image -->
+        <div class="absolute inset-0">
+            <img src="{{ url_for('static', filename='images/team.jpg') }}" 
+                 alt="Team Workshop Background"
+                 class="w-full h-full object-cover">
+        </div>
+        
+        <!-- Dark Overlay -->
+        <div class="absolute inset-0 bg-black/50 dark:bg-black/60"></div>
+        
+        <div class="container mx-auto px-4 relative z-10">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold font-orbitron mb-4">{{ translations.team_title }}</h2>
-                <p class="text-lg max-w-2xl mx-auto mb-6 text-gray-600 dark:text-gray-300">{{ translations.team_subtitle }}</p>
+                <h2 class="text-3xl md:text-4xl font-bold font-orbitron mb-4 text-white">{{ translations.team_title }}</h2>
+                <p class="text-lg max-w-2xl mx-auto mb-6 text-gray-200">{{ translations.team_subtitle }}</p>
                 <div class="w-20 h-1 bg-accent mx-auto"></div>
             </div>
             
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
                 <!-- Team Member 1 -->
-                <div class="team-member-card bg-gray-50 dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden transition duration-300">
-                    <img src="{{ url_for('static', filename='images/team/andrei.jpg') }}" alt="Andrei Popescu" class="w-full h-64 object-cover">
+                <div class="team-member-card bg-white/10 backdrop-blur-sm rounded-xl shadow-lg overflow-hidden transition duration-300">
+                    <img src="{{ url_for('static', filename='images/team/costea.png') }}" alt="costeli" class="w-full h-64 object-cover">
                     <div class="p-6">
-                        <h3 class="text-xl font-bold">Andrei Popescu</h3>
+                        <h3 class="text-xl font-bold text-white">Dohotaru Constantin</h3>
                         <p class="text-primary font-medium">{{ translations.role1 }}</p>
-                        <p class="mt-3 text-gray-600 dark:text-gray-300">{{ translations.desc1 }}</p>
+                        <p class="mt-3 text-gray-200">{{ translations.desc1 }}</p>
                     </div>
                 </div>
                 
                 <!-- Team Member 2 -->
-                <div class="team-member-card bg-gray-50 dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden transition duration-300">
-                    <img src="{{ url_for('static', filename='images/team/elena.jpg') }}" alt="Elena Rusu" class="w-full h-64 object-cover">
+                <div class="team-member-card bg-white/10 backdrop-blur-sm rounded-xl shadow-lg overflow-hidden transition duration-300">
+                    <img src="{{ url_for('static', filename='images/team/alexv.png') }}" alt="berringav" class="w-full h-64 object-cover">
                     <div class="p-6">
-                        <h3 class="text-xl font-bold">Elena Rusu</h3>
-                        <p class="text-primary font-medium">{{ translations.role2 }}</p>
-                        <p class="mt-3 text-gray-600 dark:text-gray-300">{{ translations.desc2 }}</p>
+                        <h3 class="text-xl font-bold text-white">Vizitiu Alexandru</h3>
+                        <p class="text-primary font-medium">{{ translations.role5 }}</p>
+                        <p class="mt-3 text-gray-200">{{ translations.desc5 }}</p>
                     </div>
                 </div>
                 
                 <!-- Team Member 3 -->
-                <div class="team-member-card bg-gray-50 dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden transition duration-300">
-                    <img src="{{ url_for('static', filename='images/team/mihai.jpg') }}" alt="Mihai Ciobanu" class="w-full h-64 object-cover">
+                <div class="team-member-card bg-white/10 backdrop-blur-sm rounded-xl shadow-lg overflow-hidden transition duration-300">
+                    <img src="{{ url_for('static', filename='images/team/danu.png') }}" alt="daanu" class="w-full h-64 object-cover">
                     <div class="p-6">
-                        <h3 class="text-xl font-bold">Mihai Ciobanu</h3>
+                        <h3 class="text-xl font-bold text-white">Dubrovschi Daniel</h3>
                         <p class="text-primary font-medium">{{ translations.role3 }}</p>
-                        <p class="mt-3 text-gray-600 dark:text-gray-300">{{ translations.desc3 }}</p>
+                        <p class="mt-3 text-gray-200">{{ translations.desc3 }}</p>
                     </div>
                 </div>
                 
                 <!-- Team Member 4 -->
-                <div class="team-member-card bg-gray-50 dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden transition duration-300">
-                    <img src="{{ url_for('static', filename='images/team/ana.jpg') }}" alt="Ana Moraru" class="w-full h-64 object-cover">
+                <div class="team-member-card bg-white/10 backdrop-blur-sm rounded-xl shadow-lg overflow-hidden transition duration-300">
+                    <img src="{{ url_for('static', filename='images/team/alexs.png') }}" alt="alexs" class="w-full h-64 object-cover">
                     <div class="p-6">
-                        <h3 class="text-xl font-bold">Ana Moraru</h3>
+                        <h3 class="text-xl font-bold text-white">Siviroveanu Alexandru</h3>
                         <p class="text-primary font-medium">{{ translations.role4 }}</p>
-                        <p class="mt-3 text-gray-600 dark:text-gray-300">{{ translations.desc4 }}</p>
+                        <p class="mt-3 text-gray-200">{{ translations.desc4 }}</p>
+                    </div>
+                </div>
+                <!-- Team Member 5 -->
+                <div class="team-member-card bg-white/10 backdrop-blur-sm rounded-xl shadow-lg overflow-hidden transition duration-300">
+                    <img src="{{ url_for('static', filename='images/team/dorin.png') }}" alt="doorin" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white">Kleinknecht Dorin</h3>
+                        <p class="text-primary font-medium">{{ translations.role3 }}</p>
+                        <p class="mt-3 text-gray-200">{{ translations.desc6 }}</p>
+                    </div>
+                </div>
+                <!-- Team Member 6 -->
+                <div class="team-member-card bg-white/10 backdrop-blur-sm rounded-xl shadow-lg overflow-hidden transition duration-300">
+                    <img src="{{ url_for('static', filename='images/team/robert.jpg') }}" alt="Nani Robert" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white">Nani Robert</h3>
+                        <p class="text-primary font-medium">{{ translations.role2 }}</p>
+                        <p class="mt-3 text-gray-200">{{ translations.desc2 }}</p>
+                    </div>
+                </div>
+                <!-- Team Member 7 -->
+                <div class="team-member-card bg-white/10 backdrop-blur-sm rounded-xl shadow-lg overflow-hidden transition duration-300">
+                    <img src="{{ url_for('static', filename='images/team/tudor.jpg') }}" alt="Chișlaru Tudor" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white">Chișlaru Tudor</h3>
+                        <p class="text-primary font-medium">{{ translations.role2 }}</p>
+                        <p class="mt-3 text-gray-200">{{ translations.desc2 }}</p>
+                    </div>
+                </div>
+                <!-- Team Member 8 -->
+                <div class="team-member-card bg-white/10 backdrop-blur-sm rounded-xl shadow-lg overflow-hidden transition duration-300">
+                    <img src="{{ url_for('static', filename='images/team/marius.jpg') }}" alt="Cușnir Marius" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white">Cușnir Marius</h3>
+                        <p class="text-primary font-medium">{{ translations.role6 }}</p>
+                        <p class="mt-3 text-gray-200">{{ translations.desc2 }}</p>
                     </div>
                 </div>
             </div>
@@ -368,7 +421,7 @@
     </section>
 
     <!-- Goals Section -->
-    <section id="goals" class="py-20 bg-gradient-to-br from-primary to-secondary text-white">
+    <section id="goals" class="py-20 bg-gray-50 dark:bg-gray-800">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold font-orbitron mb-4">{{ translations.goals_title }}</h2>
@@ -428,35 +481,44 @@
         </div>
     </section>
 
-    <!-- Sponsors Section -->
-    <section id="sponsors" class="py-20 bg-gray-50 dark:bg-gray-800">
-        <div class="container mx-auto px-4">
+    <!-- Sponsors Section with Background -->
+    <section id="sponsors" class="py-20 relative">
+        <!-- Background Image -->
+        <div class="absolute inset-0">
+            <img src="{{ url_for('static', filename='images/members.jpg') }}" 
+                 alt="Sponsors Background"
+                 class="w-full h-full object-cover">
+        </div>
+        
+        <!-- Dark Overlay -->
+        <div class="absolute inset-0 bg-black/50 dark:bg-black/60"></div>
+        
+        <div class="container mx-auto px-4 relative z-10">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold font-orbitron mb-4">{{ translations.sponsors_title }}</h2>
-                <p class="text-lg max-w-2xl mx-auto mb-6 text-gray-600 dark:text-gray-300">{{ translations.sponsors_subtitle }}</p>
+                <h2 class="text-3xl md:text-4xl font-bold font-orbitron mb-4 text-white">{{ translations.sponsors_title }}</h2>
+                <p class="text-lg max-w-2xl mx-auto mb-6 text-gray-200">{{ translations.sponsors_subtitle }}</p>
                 <div class="w-20 h-1 bg-accent mx-auto"></div>
             </div>
             
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 items-center">
-                <div class="sponsor-logo bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md flex items-center justify-center h-32 transition">
-                    <img src="{{ url_for('static', filename='images/sponsors/techcorp.png') }}" alt="TechCorp" class="max-h-16">
+            <marquee scrollamount="30">
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 items-center">
+                    <div class="sponsor-logo bg-white/80 backdrop-blur-sm p-6 rounded-lg shadow-md flex items-center justify-center h-32 transition">
+                        <img src="{{ url_for('static', filename='images/sponsors/classvit.png') }}" alt="Clasa Viitorului" class="max-h-16">
+                    </div>
+                    <div class="sponsor-logo bg-white/80 backdrop-blur-sm p-6 rounded-lg shadow-md flex items-center justify-center h-32 transition">
+                        <img src="{{ url_for('static', filename='images/sponsors/ltra.png') }}" alt="LTR Aristotel" class="max-h-16">
+                    </div>
+                    <div class="sponsor-logo bg-white/80 backdrop-blur-sm p-6 rounded-lg shadow-md flex items-center justify-center h-32 transition">
+                        <img src="{{ url_for('static', filename='images/sponsors/laiola.png') }}" alt="Laiola" class="max-h-16">
+                    </div>
+                    <div class="sponsor-logo bg-white/80 backdrop-blur-sm p-6 rounded-lg shadow-md flex items-center justify-center h-32 transition">
+                        <img src="{{ url_for('static', filename='images/sponsors/zepter.png') }}" alt="Zepter" class="max-h-16">
+                    </div>
                 </div>
-                <div class="sponsor-logo bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md flex items-center justify-center h-32 transition">
-                    <img src="{{ url_for('static', filename='images/sponsors/electroparts.png') }}" alt="ElectroParts" class="max-h-16">
-                </div>
-                <div class="sponsor-logo bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md flex items-center justify-center h-32 transition">
-                    <img src="{{ url_for('static', filename='images/sponsors/city-high-school.png') }}" alt="City High School" class="max-h-16">
-                </div>
-                <div class="sponsor-logo bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md flex items-center justify-center h-32 transition">
-                    <img src="{{ url_for('static', filename='images/sponsors/science-foundation.png') }}" alt="Science Foundation" class="max-h-16">
-                </div>
-                <div class="sponsor-logo bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md flex items-center justify-center h-32 transition">
-                    <img src="{{ url_for('static', filename='images/sponsors/codeacademy.png') }}" alt="CodeAcademy" class="max-h-16">
-                </div>
-            </div>
+            </marquee>
             
             <div class="mt-16 text-center">
-                <h3 class="text-2xl font-bold mb-6">{{ translations.support_us_text }}</h3>
+                <h3 class="text-2xl font-bold mb-6 text-white">{{ translations.support_us_text }}</h3>
                 <a href="#contact" class="inline-block bg-primary text-white px-8 py-3 rounded-lg font-bold hover:bg-secondary transition">{{ translations.become_sponsor }}</a>
             </div>
         </div>
@@ -473,26 +535,27 @@
             
             <div class="flex flex-col lg:flex-row gap-10">
                 <div class="lg:w-1/2">
+                    <!-- Update the form with proper name attributes -->
                     <form class="space-y-6">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div>
                                 <label class="block text-lg mb-2 font-medium">{{ translations.name_label }}</label>
-                                <input type="text" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-white dark:bg-gray-800">
+                                <input type="text" name="name" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-white dark:bg-gray-800">
                             </div>
                             <div>
                                 <label class="block text-lg mb-2 font-medium">{{ translations.email_label }}</label>
-                                <input type="email" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-white dark:bg-gray-800">
+                                <input type="email" name="email" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-white dark:bg-gray-800">
                             </div>
                         </div>
                         
                         <div>
                             <label class="block text-lg mb-2 font-medium">{{ translations.subject_label }}</label>
-                            <input type="text" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-white dark:bg-gray-800">
+                            <input type="text" name="subject" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-white dark:bg-gray-800">
                         </div>
                         
                         <div>
                             <label class="block text-lg mb-2 font-medium">{{ translations.message_label }}</label>
-                            <textarea rows="5" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-white dark:bg-gray-800"></textarea>
+                            <textarea name="message" rows="5" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-white dark:bg-gray-800"></textarea>
                         </div>
                         
                         <button type="submit" class="bg-primary text-white px-8 py-3 rounded-lg font-bold hover:bg-secondary transition">{{ translations.send_button }}</button>
@@ -510,7 +573,7 @@
                                 </div>
                                 <div>
                                     <h4 class="font-bold text-lg">{{ translations.location }}</h4>
-                                    <p class="text-gray-600 dark:text-gray-300">Liceul Teoretic "Mihai Eminescu"<br>Str. Studenților 15<br>Chișinău, Republica Moldova</p>
+                                    <p class="text-gray-600 dark:text-gray-300">Liceul Teoretic Republican "Aristotel"<br>Str. Sprâncenoaia 1<br>Chișinău, Republica Moldova</p>
                                 </div>
                             </div>
                             
@@ -520,7 +583,7 @@
                                 </div>
                                 <div>
                                     <h4 class="font-bold text-lg">{{ translations.email }}</h4>
-                                    <p class="text-gray-600 dark:text-gray-300">contact@axisftc.md<br>sponsori@axisftc.md</p>
+                                    <p class="text-gray-600 dark:text-gray-300">axis@aristotel.xyz</p>
                                 </div>
                             </div>
                             
@@ -530,32 +593,16 @@
                                 </div>
                                 <div>
                                     <h4 class="font-bold text-lg">{{ translations.phone }}</h4>
-                                    <p class="text-gray-600 dark:text-gray-300">+373 22 123 456<br>{{ translations.ask_for }} Domnul Ivanov</p>
+                                    <p class="text-gray-600 dark:text-gray-300">+373 22 281 464<br>{{ translations.ask_for }} Doamna Papuc</p>
                                 </div>
-                            </div>
-                            
-                            <div class="flex items-start">
-                                <div class="text-primary text-xl mr-4 mt-1">
-                                    <i class="fas fa-calendar-alt"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-bold text-lg">{{ translations.schedule }}</h4>
-                                    <p class="text-gray-600 dark:text-gray-300">Marți și Joi: 15:00-18:00<br>Sâmbătă: 10:00-14:00</p>
-                                </div>
-                            </div>
+                            </div> 
                         </div>
                         
                         <div class="mt-8">
                             <h4 class="font-bold text-lg mb-4">{{ translations.follow }}</h4>
                             <div class="flex space-x-4">
-                                <a href="#" class="bg-primary text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-secondary transition">
-                                    <i class="fab fa-facebook-f"></i>
-                                </a>
-                                <a href="#" class="bg-primary text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-secondary transition">
+                                <a href="https://www.instagram.com/axis.ftc/" class="bg-primary text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-secondary transition">
                                     <i class="fab fa-instagram"></i>
-                                </a>
-                                <a href="#" class="bg-primary text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-secondary transition">
-                                    <i class="fab fa-youtube"></i>
                                 </a>
                                 <a href="https://ftcscout.org/teams/28128" target="_blank" class="bg-primary text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-secondary transition">
                                     <i class="fas fa-robot"></i>
@@ -574,8 +621,8 @@
             <div class="flex flex-col md:flex-row justify-between items-center">
                 <div class="mb-6 md:mb-0">
                     <a href="https://ftcscout.org/teams/28128" class="flex items-center" target="_blank">
-                        <div class="bg-primary p-2 rounded-lg mr-3">
-                            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Axis FTC Logo" class="w-8 h-8">
+                        <div class=" p-2 rounded-lg mr-3">
+                            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Axis FTC Logo" class="w-16 h-16">
                         </div>
                         <h2 class="text-xl font-bold font-orbitron">Axis FTC <span class="text-primary">#28128</span></h2>
                     </a>
@@ -585,6 +632,7 @@
                 <div class="text-center md:text-right">
                     <p class="text-gray-400">{{ translations.copyright }}</p>
                     <p class="text-gray-400 mt-2">{{ translations.trademark }}</p>
+                    <p class="text-red-600 mt-2">Site-ul trece prin niște schimbări. Dacă întâmpinați probleme, glitch-uri, etc. contactați me@danihere.xyz</p>
                 </div>
             </div>
             
@@ -601,6 +649,7 @@
                 <div>
                     <a href="#" class="text-gray-400 hover:text-white mr-4">{{ translations.privacy }}</a>
                     <a href="#" class="text-gray-400 hover:text-white">{{ translations.terms }}</a>
+                    <!-- <a>Site-ul trece prin niste schimbari. Daca intampinati probleme, glitch-uri, etc. contactati me@danihere.xyz</a> -->
                 </div>
             </div>
         </div>
@@ -608,6 +657,52 @@
 
     <!-- JavaScript -->
     <script>
+        // Contact form submission
+    const contactForm = document.querySelector('#contact form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            // Get form data
+            const name = contactForm.querySelector('input[name="name"]').value;
+            const email = contactForm.querySelector('input[name="email"]').value;
+            const subject = contactForm.querySelector('input[name="subject"]').value;
+            const message = contactForm.querySelector('textarea').value;
+            
+            // Show loading state
+            const submitBtn = contactForm.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            submitBtn.disabled = true;
+            
+            try {
+                const response = await fetch('/send_message', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ name, email, subject, message })
+                });
+                
+                const result = await response.json();
+                
+                if (result.status === 'success') {
+                    // Show success message
+                    alert('Message sent successfully!');
+                    contactForm.reset();
+                } else {
+                    alert(`Error: ${result.message || 'Failed to send message'}`);
+                }
+            } catch (error) {
+                alert('An error occurred. Please try again later.');
+                console.error('Error:', error);
+            } finally {
+                // Reset button
+                submitBtn.innerHTML = originalBtnText;
+                submitBtn.disabled = false;
+            }
+        });
+    }
         // Initialize dark mode from localStorage
         if (localStorage.getItem('darkMode') === 'enabled') {
             document.documentElement.classList.add('dark');

@@ -1,10 +1,16 @@
 from flask import Flask, render_template, request, session, jsonify
 import os
 import json
+import requests
+from dotenv import load_dotenv  # Add this import
+
+# Load environment variables from .env file
+load_dotenv()
 
 app = Flask(__name__, static_folder='static')
-app.secret_key = 'your_secret_key_here'
+app.secret_key = os.getenv('SECRET_KEY')  # Now using from .env
 app.config['LANGUAGES'] = ['ro', 'en', 'ru']
+app.config['DISCORD_WEBHOOK_URL'] = os.getenv('DISCORD_WEBHOOK_URL')  # From .env
 
 def load_translations():
     translations = {}
@@ -44,5 +50,45 @@ def set_language():
         return jsonify({'status': 'success', 'lang': lang})
     return jsonify({'status': 'error', 'message': 'Invalid language'}), 400
 
-if __name__ == '__main__':
-    app.run(debug=True, port=5000)
+@app.route('/send_message', methods=['POST'])
+def send_message():
+    try:
+        data = request.json
+        name = data.get('name')
+        email = data.get('email')
+        subject = data.get('subject')
+        message = data.get('message')
+        
+        # Create Discord embed
+        embed = {
+            "title": "New Contact Form Submission",
+            "color": 5814783,  # Purple color
+            "fields": [
+                {"name": "Name", "value": name, "inline": True},
+                {"name": "Email", "value": email, "inline": True},
+                {"name": "Subject", "value": subject, "inline": False},
+                {"name": "Message", "value": message, "inline": False}
+            ],
+            "footer": {
+                "text": "Axis FTC Contact Form"
+            }
+        }
+        
+        payload = {
+            "embeds": [embed]
+        }
+        
+        # Send to Discord
+        response = requests.post(
+            app.config['DISCORD_WEBHOOK_URL'],
+            json=payload,
+            headers={'Content-Type': 'application/json'}
+        )
+        
+        if response.status_code == 204:
+            return jsonify({'status': 'success', 'message': 'Message sent successfully!'})
+        else:
+            return jsonify({'status': 'error', 'message': 'Failed to send message to Discord'}), 500
+            
+    except Exception as e:
+        return jsonify({'status': 'error', 'message': str(e)}), 500
