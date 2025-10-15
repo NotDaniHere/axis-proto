@@ -36,6 +36,33 @@
     <!-- <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
      -->
     <style>
+        video {
+            width: 100%;
+            height: auto;
+        }
+        .video-container {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 100%;
+            height: 100%; 
+            overflow: hidden;
+            }
+        .video-container video {
+            /* Make video to at least 100% wide and tall */
+            min-width: 100%; 
+            min-height: 100%; 
+            object-fit: cover;
+            /* Setting width & height to auto prevents the browser from stretching or squishing the video */
+            width: auto;
+            height: auto;
+
+            /* Center the video */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            }
         .team-member-card:hover {
             transform: translateY(-5px);
             transition: transform 0.3s ease;
@@ -107,9 +134,9 @@
             <div class="flex items-center">
                 <a href="https://ftcscout.org/teams/28128" class="flex items-center group" target="_blank">
                     <div class="p-1 rounded-lg mr-4 group-hover:scale-105 transition">
-                        <img src="https://res.cloudinary.com/dsuxl1x7u/image/upload/v1756141029/logo_atrizh.png" alt="Axis FTC Logo" class="w-12 h-12">
+                        <img src="https://res.cloudinary.com/dsuxl1x7u/image/upload/v1760504930/logo3_a0lpgk.png" alt="Axis FTC Logo" class="w-14 h-14">
                     </div>
-                    <h1 class="text-xl md:text-2xl font-bold font-orbitron group-hover:text-primary transition">Axis <span class="text-primary">#28128</span></h1>
+                    <h1 class="text-xl md:text-2xl font-bold font-orbitron group-hover:text-primary transition">Axis <span class="text-primary"></span></h1>
                 </a>
             </div>
             
@@ -200,9 +227,12 @@
     <section class="hero-section pt-32 pb-32 md:pt-48 md:pb-48 text-white relative">
     <!-- Background Image -->
     <div class="absolute inset-0">
-        <video autoplay muted> 
+        <div class = "video-container">
+            <video autoplay muted> 
             <source src="https://res.cloudinary.com/dsuxl1x7u/video/upload/v1758484840/Timeline_1_go3k1m.mp4" type="video/mp4">
         </video>
+        </div>
+        
              
     </div>
     
@@ -214,9 +244,9 @@
         <!-- Content -->
         <div class="container mx-auto px-4 text-center relative z-10">
             <div class="flex justify-center mb-6">
-                <div class="bg-white/20 px-4 py-1 rounded-full text-sm backdrop-blur-sm">
+                <!-- <div class="bg-white/20 px-4 py-1 rounded-full text-sm backdrop-blur-sm">
                     <i class="fas fa-star mr-2"></i>{{ translations.rookie }}
-                </div>
+                </div> -->
             </div>
             <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold font-orbitron mb-6">{{ translations.hero_title }}</h1>
             <p class="text-xl md:text-2xl lg:text-3xl max-w-3xl mx-auto mb-10">
@@ -280,6 +310,9 @@
                     <p class="text-lg mb-6 text-gray-600 dark:text-gray-300">
                         {{ translations.story_text2 }}
                     </p>
+                    <p class="text-lg mb-6 text-gray-600 dark:text-gray-300">
+                        {{ translations.story_text3 }}
+                    </p>
                     
                     <div class="mb-8">
                         <h4 class="text-xl font-bold mb-4">{{ translations.competitions_title }}</h4>
@@ -295,11 +328,11 @@
                     
                     <div class="grid grid-cols-2 gap-4">
                         <div class="bg-white dark:bg-gray-700 p-4 rounded-lg shadow">
-                            <div class="text-3xl font-bold text-primary mb-2">1</div>
+                            <div class="text-3xl font-bold text-primary mb-2">2</div>
                             <div class="font-medium text-gray-600 dark:text-gray-300">{{ translations.experience }}</div>
                         </div>
                         <div class="bg-white dark:bg-gray-700 p-4 rounded-lg shadow">
-                            <div class="text-3xl font-bold text-primary mb-2">12</div>
+                            <div class="text-3xl font-bold text-primary mb-2">15</div>
                             <div class="font-medium text-gray-600 dark:text-gray-300">{{ translations.members }}</div>
                         </div>
                         <div class="bg-white dark:bg-gray-700 p-4 rounded-lg shadow">
@@ -412,12 +445,6 @@
                     </div>
                 </div>
             </div>
-            
-            <div class="mt-12 text-center">
-                <a href="#contact" class="inline-block bg-primary text-white px-6 py-3 rounded-lg font-medium hover:bg-secondary transition">
-                    <i class="fas fa-plus mr-2"></i>{{ translations.see_all }}
-                </a>
-            </div>
         </div>
     </section>
 
@@ -500,8 +527,6 @@
                 <p class="text-lg max-w-2xl mx-auto mb-6 text-gray-200">{{ translations.sponsors_subtitle }}</p>
                 <div class="w-20 h-1 bg-accent mx-auto"></div>
             </div>
-            
-            <marquee scrollamount="10">
                 <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 items-center">
                     <div class="sponsor-logo bg-white/80 backdrop-blur-sm p-6 rounded-lg shadow-md flex items-center justify-center h-32 transition">
                         <img src="https://res.cloudinary.com/dsuxl1x7u/image/upload/v1756141071/classvit_qmfcax.png" alt="Clasa Viitorului" class="max-h-16">
@@ -515,8 +540,10 @@
                     <div class="sponsor-logo bg-white/80 backdrop-blur-sm p-6 rounded-lg shadow-md flex items-center justify-center h-32 transition">
                         <img src="https://res.cloudinary.com/dsuxl1x7u/image/upload/v1758485693/Black-on-White-1000x600-1-removebg-preview_mptr6u.png" alt="Jeju" class="max-h-16">
                     </div>
+                    <div class="sponsor-logo bg-white/80 backdrop-blur-sm p-6 rounded-lg shadow-md flex items-center justify-center h-32 transition">
+                        <img src="https://res.cloudinary.com/dsuxl1x7u/image/upload/v1759428770/try-removebg-preview_ryncjf.png" class="max-h-16">
+                    </div>
                 </div>
-            </marquee>
             
             <div class="mt-16 text-center">
                 <h3 class="text-2xl font-bold mb-6 text-white">{{ translations.support_us_text }}</h3>
@@ -617,13 +644,13 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-12">
+    <footer class="bg-blue-800 text-white py-12">
         <div class="container mx-auto px-4">
             <div class="flex flex-col md:flex-row justify-between items-center">
                 <div class="mb-6 md:mb-0">
                     <a href="https://ftcscout.org/teams/28128" class="flex items-center" target="_blank">
                         <div class=" p-2 rounded-lg mr-3">
-                            <img src="https://res.cloudinary.com/dsuxl1x7u/image/upload/v1756141029/logo_atrizh.png" alt="Axis FTC Logo" class="w-16 h-16">
+                            <img src="https://res.cloudinary.com/dsuxl1x7u/image/upload/v1760504930/logo3_a0lpgk.png" alt="Axis FTC Logo" class="w-16 h-16">
                         </div>
                         <h2 class="text-xl font-bold font-orbitron">Axis FTC <span class="text-primary">#28128</span></h2>
                     </a>
